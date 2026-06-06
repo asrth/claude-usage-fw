@@ -12,17 +12,21 @@ automatically and self-update. The source code lives in a separate repo.
 ## What it looks like
 
 The main page has three switchable themes; there's also a weekly burn-rate
-projection and a per-model breakdown.
+projection, a per-model breakdown, and a settings page. Plus a cute boot splash 🧡
 
-| Main · Rings | Main · Bars | Main · Type |
+| Boot | Main · Rings | Main · Bars |
 |:---:|:---:|:---:|
-| ![Rings](screenshots/main-rings.png) | ![Bars](screenshots/main-bars.png) | ![Type](screenshots/main-type.png) |
+| ![Boot](screenshots/boot.png) | ![Rings](screenshots/main-rings.png) | ![Bars](screenshots/main-bars.png) |
 
-| Projection (will it last the week?) | Models |
-|:---:|:---:|
-| ![Projection](screenshots/projection.png) | ![Models](screenshots/models.png) |
+| Main · Type | Projection | Models |
+|:---:|:---:|:---:|
+| ![Type](screenshots/main-type.png) | ![Projection](screenshots/projection.png) | ![Models](screenshots/models.png) |
 
-<sub>Real 320×240 captures from a Core 2 (direct mode, live usage).</sub>
+| Settings |
+|:---:|
+| ![Settings](screenshots/settings.png) |
+
+<sub>Real 320×240 captures from a Core 2 (direct mode, live usage; WiFi/IP masked).</sub>
 
 ---
 
