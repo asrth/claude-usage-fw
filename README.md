@@ -14,17 +14,15 @@ automatically and self-update. The source code lives in a separate repo.
 The main page has three switchable themes; there's also a weekly burn-rate
 projection, a per-model breakdown, and a settings page. Plus a cute boot splash 🧡
 
-| Boot | Main · Rings | Main · Bars |
-|:---:|:---:|:---:|
-| ![Boot](screenshots/boot.png) | ![Rings](screenshots/main-rings.png) | ![Bars](screenshots/main-bars.png) |
+<p align="center">
+  <img src="screenshots/boot.png" width="480" alt="Boot splash — Connecting WiFi">
+</p>
 
-| Main · Type | Projection | Models |
+| Main · Rings | Main · Bars | Main · Type |
 |:---:|:---:|:---:|
-| ![Type](screenshots/main-type.png) | ![Projection](screenshots/projection.png) | ![Models](screenshots/models.png) |
-
-| Settings |
-|:---:|
-| ![Settings](screenshots/settings.png) |
+| ![Rings](screenshots/main-rings.png) | ![Bars](screenshots/main-bars.png) | ![Type](screenshots/main-type.png) |
+| **Projection** | **Models** | **Settings** |
+| ![Projection](screenshots/projection.png) | ![Models](screenshots/models.png) | ![Settings](screenshots/settings.png) |
 
 <sub>Real 320×240 captures from a Core 2 (direct mode, live usage; WiFi/IP masked).</sub>
 
