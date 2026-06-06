@@ -9,6 +9,21 @@ automatically and self-update. The source code lives in a separate repo.
 
 > 📥 **Get the latest firmware:** [**Releases**](../../releases/latest)
 
+## What it looks like
+
+The main page has three switchable themes; there's also a weekly burn-rate
+projection and a per-model breakdown.
+
+| Main · Rings | Main · Bars | Main · Type |
+|:---:|:---:|:---:|
+| ![Rings](screenshots/main-rings.png) | ![Bars](screenshots/main-bars.png) | ![Type](screenshots/main-type.png) |
+
+| Projection (will it last the week?) | Models |
+|:---:|:---:|
+| ![Projection](screenshots/projection.png) | ![Models](screenshots/models.png) |
+
+<sub>Real 320×240 captures from a Core 2 (direct mode, live usage).</sub>
+
 ---
 
 ## 1. Which file do I download?
