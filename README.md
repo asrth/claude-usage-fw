@@ -123,6 +123,52 @@ Once connected it shows your usage. The org is auto-discovered.
 > device only carries an access token — better when handing a device to someone
 > else. See the source repo.
 
+### Full `claude-usage.json` field reference
+
+All fields are optional — omit any to take its default. A minimal direct-mode
+config only needs `wifiSsid`, `wifiPass`, and `claudeSession`.
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `wifiSsid` | string | — | Primary WiFi network name |
+| `wifiPass` | string | — | Primary WiFi password |
+| `wifi` | array | `[]` | Extra WiFi networks to try (see below) |
+| **— Mode —** | | | |
+| `apiDirect` | bool | `true` | `true` = device calls claude.ai itself; `false` = via a proxy |
+| `claudeSession` | string | `""` | **direct:** your claude.ai `sessionKey` cookie |
+| `claudeOrg` | string | `""` | **direct:** pin an org UUID; blank = auto-discover |
+| `proxyHost` | string | `""` | **proxy:** proxy host or IP |
+| `proxyPort` | int | `8787` | **proxy:** proxy port |
+| `proxyTls` | bool | `false` | **proxy:** use HTTPS to the proxy |
+| `proxyToken` | string | `""` | **proxy:** proxy access token (sent as `?token=`) |
+| `proxyAccount` | string | `""` | **proxy:** which account id (sent as `?account=`) |
+| **— Updates (OTA) —** | | | |
+| `otaRepo` | string | `asrth/claude-usage-fw` | Public GitHub repo checked for new firmware |
+| `otaAuto` | bool | `true` | `true` = auto-install; `false` = show an "Update" banner |
+| **— Display & misc —** | | | |
+| `tzOffsetSec` | int | `25200` | Timezone offset in seconds (25200 = UTC+7) |
+| `brightness` | int | `180` | Backlight, 20–255 |
+| `volume` | int | `96` | Beep volume, 0–255 |
+| `clickEnabled` | bool | `true` | Click / beep sounds |
+| `theme` | int | `0` | Main-page theme: 0 = Rings, 1 = Bars, 2 = Type |
+| `rotation` | int | `0` | Display rotation 0–3 (Core Ink only) |
+| `lastPage` | int | `0` | Last shown page — managed by the device, restored on boot |
+
+**Multi-WiFi (`wifi[]`):** each entry is `{ "ssid", "pass" }` and may carry a
+per-network `"proxyHost"` / `"proxyPort"` override (proxy mode). The device joins
+the strongest network it can see.
+
+```json
+"wifi": [
+  { "ssid": "home-2g", "pass": "..." },
+  { "ssid": "office",  "pass": "...", "proxyHost": "10.1.0.5", "proxyPort": 8787 }
+]
+```
+
+> The same settings are also available over the serial console (`apimode`,
+> `session`, `proxy`, `token`, `account`, `tz`, `theme`, `otarepo`, `otaauto`, …).
+> Run `show` to print the current config.
+
 ---
 
 ## 5. Automatic updates (OTA)
