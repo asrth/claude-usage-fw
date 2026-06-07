@@ -190,4 +190,30 @@ So you normally flash over USB **once**, then never need a cable again.
   **hold BtnB** to edit it (A/C become −/+, the control turns green), hold again to finish.
 - **Hold BtnA** (any board) = re-open WiFi setup. **Hold BtnB** on the Projection page = clear its history.
 
+### Using the Settings page on the Fire
+
+The Fire has buttons instead of touch, so the Settings page has **two modes** — the
+bottom bar always tells you which one you're in.
+
+<p align="center">
+  <img src="screenshots/fire-settings.png" width="360" alt="Fire Settings page">
+</p>
+
+**1) Navigate** (default) — bottom bar `< Prev · Sel/Ent · Next >`
+- **BtnA / BtnC** → previous / next **page** (you can leave Settings any time)
+- **BtnB (press)** → move the highlight to the next control (Brightness → Volume → Theme)
+- **BtnB (hold)** → **enter edit** for the highlighted control
+
+**2) Edit** — bottom bar `– · Sel/Esc · +`, and the control's outline turns **green**
+- **BtnA / BtnC** → decrease / increase (cycles Theme; installs a pending update)
+- **BtnB (hold)** → **finish** editing, back to Navigate
+- BtnB (press) still hops to the next control
+
+**Example — change brightness:** open Settings (starts on Brightness) → **hold BtnB**
+(turns green) → **BtnA / BtnC** to dim / brighten → **hold BtnB** to finish → **BtnC**
+to move on.
+
+> On the **Core 2** (touch) you just tap the controls directly, and the middle of
+> the bottom bar cycles the Theme.
+
 Boards: M5Stack **Core 2** and **Fire** (ESP32, 16 MB).
