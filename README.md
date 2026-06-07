@@ -185,7 +185,9 @@ So you normally flash over USB **once**, then never need a cable again.
 ## Buttons
 
 - **Core 2** (touch): tap left/right of the bottom bar = prev/next page; middle = refresh (or Theme on Settings).
-- **Fire**: **BtnA** prev page, **BtnC** next, **BtnB** refresh. On Settings, A/C adjust, B selects.
+- **Fire**: **BtnA** = prev page, **BtnC** = next page, **BtnB** = refresh. On the
+  Settings page it keeps paging with A/C; press **BtnB** to pick a control, then
+  **hold BtnB** to edit it (A/C become −/+, the control turns green), hold again to finish.
 - **Hold BtnA** (any board) = re-open WiFi setup. **Hold BtnB** on the Projection page = clear its history.
 
 Boards: M5Stack **Core 2** and **Fire** (ESP32, 16 MB).
