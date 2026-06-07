@@ -26,6 +26,10 @@ projection, a per-model breakdown, and a settings page. Plus a cute boot splash 
 
 <sub>Real 320×240 captures from a Core 2 (direct mode, live usage; WiFi/IP masked).</sub>
 
+> 💳 The green **`Extra $… / $…`** chip (pay-as-you-go credits, used / monthly limit)
+> is **opt-in** — it only shows when you've enabled **extra usage** in your
+> claude.ai billing settings. It's hidden otherwise, so you'll usually not see it.
+
 ---
 
 ## 1. Which file do I download?
