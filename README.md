@@ -1,8 +1,9 @@
 # claude-usage-fw
 
-Prebuilt firmware **releases** for the Claude usage display on **M5Stack Core 2**
-and **M5Stack Fire**. The device shows your Claude.ai usage (session + weekly,
-projection graph) on its screen.
+Prebuilt firmware **releases** for the Claude usage display on **M5Stack Core 2**,
+**M5Stack Fire**, and the **JC3248W535EN** (3.5" ESP32-S3 capacitive touch). The
+device shows your Claude.ai usage (session + weekly, projection graph) on its
+screen. (JC3248W535EN setup is in [its own section](#jc3248w535en--35-esp32-s3-capacitive-touch) below.)
 
 This repo is the **public release/OTA channel** — devices on v1.1.0+ check it
 automatically and self-update. The source code lives in a separate repo.
@@ -220,4 +221,86 @@ to move on.
 > On the **Core 2** (touch) you just tap the controls directly, and the middle of
 > the bottom bar cycles the Theme.
 
-Boards: M5Stack **Core 2** and **Fire** (ESP32, 16 MB).
+---
+
+## JC3248W535EN — 3.5" ESP32-S3 (capacitive touch)
+
+A second supported board: the **Guition JC3248W535EN** — a 3.5" 320×480 IPS
+capacitive-touch display on an **ESP32-S3-N16R8** (16 MB flash, 8 MB PSRAM,
+AXS15231B QSPI panel). Landscape 480×320 UI, full touch, no physical buttons.
+
+> Its firmware lives in a separate source repo and is versioned independently
+> from the M5 builds (tags like **`jc3248-v0.7.0`**, not `v1.x`).
+
+### 1. Download + flash (over USB-C)
+
+Grab **`jc3248w535en-<ver>.bin`** from
+[**Releases**](../../releases) — it's a **full image** (bootloader + partitions
++ app merged), so you flash it at offset **`0x0`**.
+
+```bash
+pip install esptool
+# port: macOS  ls /dev/cu.usbmodem*   Linux  ls /dev/ttyACM*   Windows  COMx
+esptool.py --chip esp32s3 --port <PORT> --baud 921600 write_flash 0x0 jc3248w535en-<ver>.bin
+```
+
+> Native USB-CDC: the port shows up as `cu.usbmodem…` / `ttyACM…` (not
+> `usbserial`). No driver needed on recent macOS/Linux.
+
+### 2. Configure (microSD — same `claude-usage.json`)
+
+Identical schema to the M5 boards (see the field reference above). Put a
+`claude-usage.json` at the SD root, insert, power on. It is read once and written
+through to NVS, so the card isn't required afterwards.
+
+```json
+{
+  "wifiSsid": "YOUR_WIFI",
+  "wifiPass": "YOUR_WIFI_PASSWORD",
+  "apiDirect": true,
+  "claudeSession": "sk-ant-sid...-PASTE-YOURS-HERE",
+  "tzOffsetSec": 25200
+}
+```
+
+You can also configure over the **serial console @ 115200** (`session <key>`,
+`wifi-add "<ssid>" "<pass>"`, `show`, …) or the on-screen WiFi portal on first
+boot — exactly like the M5 boards.
+
+### Multi-account (`sessions[]`) — JC3248 only
+
+This board can hold **several Claude accounts** and switch between them. Replace
+the single `claudeSession`/`claudeOrg` with a `sessions[]` array and pick the
+active one with `activeSession` (0-based). The **org is auto-discovered** from
+each `sessionKey`, so `org` is optional.
+
+```json
+{
+  "wifiSsid": "YOUR_WIFI",
+  "wifiPass": "YOUR_WIFI_PASSWORD",
+  "apiDirect": true,
+  "sessions": [
+    { "name": "main", "session": "sk-ant-sid...-ACCOUNT-1" },
+    { "name": "work", "session": "sk-ant-sid...-ACCOUNT-2" }
+  ],
+  "activeSession": 0,
+  "tzOffsetSec": 25200
+}
+```
+
+Switch live over serial: `sessions` (list), `usesession <n>` (switch),
+`session-add <name> <key> [org]` (append an account).
+
+### Controls (touch)
+
+- **Tap left / right** of the bottom bar → previous / next page
+  (Rings/Bars/Type · Projection · Models · Settings).
+- On **Settings**, tap the sliders / theme roller directly.
+
+> Note: automatic OTA updates are **not** wired up on this board yet — re-flash
+> over USB to update. (The M5 boards self-update; see §5 above.)
+
+---
+
+Boards: M5Stack **Core 2** / **Fire** (ESP32, 16 MB) and **JC3248W535EN**
+(ESP32-S3, 16 MB / 8 MB PSRAM, 3.5" capacitive touch).
